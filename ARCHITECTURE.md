@@ -44,7 +44,7 @@ AI KING (LLM Generative General Intelligence) is a comprehensive artificial inte
 ### Beyond Linear Inference
 - **Central Orchestrator as “Prefrontal Cortex”**: Receives high-level objectives and decomposes them into a DAG of subtasks for deterministic routing.
 - **Specialized Agents**: Modular workers (e.g., search agent for retrieval, coder agent for execution, critic agent for QA) that plug into the orchestrator.
-- **Agentic Loop**: Iterative cycles where results are validated, recirculated, or escalated for human-in-the-loop checkpoints to prevent deadlocks or infinite loops.
+- **Agentic Loop**: Iterative cycles where results are validated, recirculated, or escalated (e.g., low confidence, quality gate failures, safety flags) for human-in-the-loop checkpoints to prevent deadlocks or infinite loops.
 
 ### Framework Evaluation
 - **Role-Based Abstractions (CrewAI, AutoGen)**: Fast to prototype but prone to interaction complexity and infinite loop/deadlock risk at scale.
@@ -71,7 +71,7 @@ AI KING (LLM Generative General Intelligence) is a comprehensive artificial inte
   - Observability via tracing/telemetry platforms for multi-agent workflows.
   - Scaling choices: serverless for bursty inference; Kubernetes for stateful tool sessions.
   - Governed rollouts with access controls and change checkpoints.
-- **Refinement Pipelines**: RLHF at the agent level to align autonomous decisions with safety and intent.
+- **Refinement Pipelines**: Reinforcement Learning from Human Feedback (RLHF) at the agent level to align autonomous decisions with safety and intent.
 
 ## Core Components
 
