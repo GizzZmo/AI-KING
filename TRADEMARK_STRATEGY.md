@@ -344,9 +344,11 @@ This document outlines the strategic approach to establishing and protecting the
 
 ## Budget Planning
 
+**Note**: All cost estimates are approximate and based on 2024 fee schedules. Actual costs may vary by jurisdiction, exchange rates, and changes in official filing fees. Consult current fee schedules and trademark attorneys for up-to-date pricing.
+
 ### Initial Costs (Year 1)
 
-| Item | Estimated Cost |
+| Item | Estimated Cost (USD, 2024) |
 |------|----------------|
 | USPTO Filing (3 classes) | $750 - $1,050 |
 | Trademark Search | $300 - $1,500 |
@@ -359,7 +361,7 @@ This document outlines the strategic approach to establishing and protecting the
 
 ### Ongoing Costs (Annual)
 
-| Item | Estimated Cost |
+| Item | Estimated Cost (USD, 2024) |
 |------|----------------|
 | Trademark Monitoring | $500 - $2,000 |
 | Domain Renewals | $200 - $500 |
@@ -369,7 +371,7 @@ This document outlines the strategic approach to establishing and protecting the
 
 ### Long-term Costs (10-year outlook)
 
-| Item | Estimated Cost |
+| Item | Estimated Cost (USD, 2024) |
 |------|----------------|
 | US Renewals (years 5-6, 9-10) | $1,500 - $2,500 |
 | EU Renewal (year 10) | €950 (~$1,050) |

@@ -214,7 +214,7 @@ For multi-country protection:
    - Evidence: Show unique usage in market
 
 2. **Specimen Issues** (Class 9)
-   - Issue: Specimen doesn't show mark on downloadable software
+   - Issue: Specimen does not show mark on downloadable software
    - Solution: Provide proper download page screenshot or software interface
 
 3. **Service Description Clarity** (Classes 35, 42)

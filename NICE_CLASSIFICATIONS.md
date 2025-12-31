@@ -267,7 +267,7 @@ The mark "AI KING" should be evaluated against:
 - **International**: Varies by jurisdiction
 
 ### Ongoing Monitoring
-- Watch for confusingly similar marks in Classes 9, 35, 42
+- Monitor for confusingly similar marks in Classes 9, 35, 42
 - Monitor competitive launches of similar AI products
 - Enforce against unauthorized use of "AI KING" mark
 - Maintain consistent use across all products and services
