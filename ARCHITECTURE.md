@@ -39,6 +39,36 @@ AI KING (LLM Generative General Intelligence) is a comprehensive artificial inte
 └─────────────────────────────────────────────────────────────┘
 ```
 
+## Technical Strategy: Engineering Generative General Intelligence
+
+### Beyond Linear Inference
+- **Central Orchestrator as “Prefrontal Cortex”**: Receives high-level objectives and decomposes them into a DAG of subtasks for deterministic routing.
+- **Specialized Agents**: Modular workers (e.g., search agent for retrieval, coder agent for execution, critic agent for QA) that plug into the orchestrator.
+- **Agentic Loop**: Iterative cycles where results are validated, recirculated, or escalated for human-in-the-loop checkpoints to prevent loop-locks.
+
+### Framework Evaluation
+- **Role-Based Abstractions (CrewAI, AutoGen)**: Fast to prototype but prone to interaction complexity and loop-lock at scale.
+- **Graph-Based Orchestration (LangGraph, Semantic Kernel)**: Preferred for production—explicit state machines, controlled cycles, and deterministic error recovery.
+- **Recursive Reasoning Advantage**: Agents self-question and draft multiple candidates before responding, improving reasoning quality.
+
+### Interoperability via Model Context Protocol (MCP)
+- Treat MCP as “HTTP for AI” to expose tools and data sources through a universal contract.
+- Use MCP-compliant servers to swap or upgrade instruments (e.g., storage, SaaS APIs) without changing core intelligence logic.
+
+### Intelligence Composition: MoE vs. MoA
+- **Mixture of Experts (MoE)**: Model-level expert routing (e.g., Mixtral, GPT-4) for efficient activation.
+- **Mixture of Agents (MoA)**: Macro-level ensemble across models (e.g., Claude for reasoning, GPT-4o for tool use, Llama for summarization) with a proposer/aggregator that delivers a “wisdom of the crowd” response.
+
+### Memory and State Management
+- **Vector Semantic Memory (RAG)**: Pinecone/Milvus-style retrieval for similarity-based context.
+- **Structured Knowledge Graphs**: Neo4j-style factual grounding to capture entities/relations that vectors miss.
+- **Hybrid Memory**: Combine semantic recall with graph-verified facts for long-horizon autonomy.
+
+### Deployment and Self-Improvement
+- **Recursive Self-Improvement Loops**: Agents review logs and outcomes, propose prompt updates, and feed fine-tuning data.
+- **AgentOps**: Observability (e.g., LangSmith traces), scaling choices (serverless for bursty inference vs. Kubernetes for stateful tools), and governed rollouts.
+- **Refinement Pipelines**: RLHF at the agent level to align autonomous decisions with safety and intent.
+
 ## Core Components
 
 ### 1. Generative General Intelligence Core
