@@ -52,7 +52,7 @@ AI KING (LLM Generative General Intelligence) is a comprehensive artificial inte
 - **Recursive Reasoning Advantage**: Agents self-question and draft multiple candidates before responding, improving reasoning quality.
 
 ### Interoperability via Model Context Protocol (MCP)
-- Treat MCP as “HTTP for AI” to expose tools and data sources through a universal contract.
+- MCP provides a standard contract for exposing tools and data sources; treat it as “HTTP for AI” to swap capabilities without brittle glue code.
 - Use MCP-compliant servers to swap or upgrade instruments (e.g., storage, SaaS APIs) without changing core intelligence logic.
 
 ### Intelligence Composition: MoE vs. MoA
@@ -61,14 +61,14 @@ AI KING (LLM Generative General Intelligence) is a comprehensive artificial inte
 - **Proposer/Aggregator Pattern**: A coordinator agent blends multiple model responses to deliver a “wisdom of the crowd” answer.
 
 ### Memory and State Management
-- **Vector Semantic Memory (RAG)**: Pinecone-style or Milvus-style retrieval for similarity-based context.
-- **Structured Knowledge Graphs**: Neo4j-style factual grounding to capture entities/relations that vectors miss.
+- **Vector Semantic Memory (RAG)**: Vector database retrieval (e.g., Pinecone or Milvus) for similarity-based context.
+- **Structured Knowledge Graphs**: Graph database grounding (e.g., Neo4j) to capture entities/relations that vectors miss.
 - **Hybrid Memory**: Combine semantic recall with graph-verified facts for long-horizon autonomy.
 
 ### Deployment and Self-Improvement
 - **Recursive Self-Improvement Loops**: Agents review logs and outcomes, propose prompt updates, and feed fine-tuning data.
 - **AgentOps**:
-  - Observability (e.g., LangSmith traces) for multi-agent chain-of-thought.
+  - Observability via tracing/telemetry platforms for multi-agent chain-of-thought.
   - Scaling choices: serverless for bursty inference; Kubernetes for stateful tool sessions.
   - Governed rollouts with access controls and change checkpoints.
 - **Refinement Pipelines**: RLHF at the agent level to align autonomous decisions with safety and intent.
