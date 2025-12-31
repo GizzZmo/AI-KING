@@ -39,6 +39,40 @@ AI KING (LLM Generative General Intelligence) is a comprehensive artificial inte
 └─────────────────────────────────────────────────────────────┘
 ```
 
+## Technical Strategy: Engineering Generative General Intelligence
+
+### Beyond Linear Inference
+- **Central Orchestrator as “Prefrontal Cortex”**: Receives high-level objectives and decomposes them into a DAG of subtasks for deterministic routing.
+- **Specialized Agents**: Modular workers (e.g., search agent for retrieval, coder agent for execution, critic agent for QA) that plug into the orchestrator.
+- **Agentic Loop**: Iterative cycles where results are validated, recirculated, or escalated (e.g., low confidence, quality gate failures, safety flags) for human-in-the-loop checkpoints to prevent deadlocks or infinite loops.
+
+### Framework Evaluation
+- **Role-Based Abstractions (CrewAI, AutoGen)**: Fast to prototype but prone to interaction complexity and infinite loop/deadlock risk at scale.
+- **Graph-Based Orchestration (LangGraph, Semantic Kernel)**: Preferred for production—explicit state machines, controlled cycles, and deterministic error recovery.
+- **Recursive Reasoning Advantage**: Agents self-question and draft multiple candidates before responding, improving reasoning quality.
+
+### Interoperability via Model Context Protocol (MCP)
+- MCP provides a standard contract for exposing tools and data sources; treat it as “HTTP for AI” to swap capabilities without brittle glue code.
+- Use MCP-compliant servers to swap or upgrade instruments (e.g., storage, SaaS APIs) without changing core intelligence logic.
+
+### Intelligence Composition: MoE vs. MoA
+- **Mixture of Experts (MoE)**: Model-level expert routing (e.g., Mixtral, GPT-4o) for efficient activation.
+- **Mixture of Agents (MoA)**: Macro-level ensemble across models (e.g., Claude for reasoning, GPT-4o for tool use, Llama for summarization).
+- **Proposer/Aggregator Pattern**: A coordinator agent blends multiple model responses to deliver a “wisdom of the crowd” answer.
+
+### Memory and State Management
+- **Vector Semantic Memory (RAG)**: Vector database retrieval (e.g., Pinecone or Milvus) for similarity-based context.
+- **Structured Knowledge Graphs**: Graph database grounding (e.g., Neo4j) to capture entities/relations that vectors miss.
+- **Hybrid Memory**: Combine semantic recall with graph-verified facts for long-horizon autonomy.
+
+### Deployment and Self-Improvement
+- **Recursive Self-Improvement Loops**: Agents review logs and outcomes, propose prompt updates, and feed fine-tuning data.
+- **AgentOps**:
+  - Observability via tracing/telemetry platforms for multi-agent workflows.
+  - Scaling choices: serverless for bursty inference; Kubernetes for stateful tool sessions.
+  - Governed rollouts with access controls and change checkpoints.
+- **Refinement Pipelines**: Reinforcement Learning from Human Feedback (RLHF) at the agent level to align autonomous decisions with safety and intent.
+
 ## Core Components
 
 ### 1. Generative General Intelligence Core
