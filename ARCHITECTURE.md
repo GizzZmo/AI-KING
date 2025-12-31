@@ -57,16 +57,20 @@ AI KING (LLM Generative General Intelligence) is a comprehensive artificial inte
 
 ### Intelligence Composition: MoE vs. MoA
 - **Mixture of Experts (MoE)**: Model-level expert routing (e.g., Mixtral, GPT-4) for efficient activation.
-- **Mixture of Agents (MoA)**: Macro-level ensemble across models (e.g., Claude for reasoning, GPT-4o for tool use, Llama for summarization) with a proposer/aggregator that delivers a “wisdom of the crowd” response.
+- **Mixture of Agents (MoA)**: Macro-level ensemble across models (e.g., Claude for reasoning, GPT-4o for tool use, Llama for summarization).
+- **Proposer/Aggregator Pattern**: A coordinator agent blends multiple model responses to deliver a “wisdom of the crowd” answer.
 
 ### Memory and State Management
-- **Vector Semantic Memory (RAG)**: Pinecone/Milvus-style retrieval for similarity-based context.
+- **Vector Semantic Memory (RAG)**: Pinecone-style or Milvus-style retrieval for similarity-based context.
 - **Structured Knowledge Graphs**: Neo4j-style factual grounding to capture entities/relations that vectors miss.
 - **Hybrid Memory**: Combine semantic recall with graph-verified facts for long-horizon autonomy.
 
 ### Deployment and Self-Improvement
 - **Recursive Self-Improvement Loops**: Agents review logs and outcomes, propose prompt updates, and feed fine-tuning data.
-- **AgentOps**: Observability (e.g., LangSmith traces), scaling choices (serverless for bursty inference vs. Kubernetes for stateful tools), and governed rollouts.
+- **AgentOps**:
+  - Observability (e.g., LangSmith traces) for multi-agent chain-of-thought.
+  - Scaling choices: serverless for bursty inference; Kubernetes for stateful tool sessions.
+  - Governed rollouts with access controls and change checkpoints.
 - **Refinement Pipelines**: RLHF at the agent level to align autonomous decisions with safety and intent.
 
 ## Core Components
