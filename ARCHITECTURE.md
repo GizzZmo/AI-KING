@@ -56,7 +56,7 @@ AI KING (LLM Generative General Intelligence) is a comprehensive artificial inte
 - Use MCP-compliant servers to swap or upgrade instruments (e.g., storage, SaaS APIs) without changing core intelligence logic.
 
 ### Intelligence Composition: MoE vs. MoA
-- **Mixture of Experts (MoE)**: Model-level expert routing (e.g., Mixtral, GPT-4) for efficient activation.
+- **Mixture of Experts (MoE)**: Model-level expert routing (e.g., Mixtral, GPT-4o) for efficient activation.
 - **Mixture of Agents (MoA)**: Macro-level ensemble across models (e.g., Claude for reasoning, GPT-4o for tool use, Llama for summarization).
 - **Proposer/Aggregator Pattern**: A coordinator agent blends multiple model responses to deliver a “wisdom of the crowd” answer.
 
@@ -68,7 +68,7 @@ AI KING (LLM Generative General Intelligence) is a comprehensive artificial inte
 ### Deployment and Self-Improvement
 - **Recursive Self-Improvement Loops**: Agents review logs and outcomes, propose prompt updates, and feed fine-tuning data.
 - **AgentOps**:
-  - Observability via tracing/telemetry platforms for multi-agent chain-of-thought.
+  - Observability via tracing/telemetry platforms for multi-agent workflows.
   - Scaling choices: serverless for bursty inference; Kubernetes for stateful tool sessions.
   - Governed rollouts with access controls and change checkpoints.
 - **Refinement Pipelines**: RLHF at the agent level to align autonomous decisions with safety and intent.
