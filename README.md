@@ -1,5 +1,5 @@
 # AI KING
-**LLM Generative General Intelligence (LLMGGI)**
+**Artifical General Intelligence project (AGI)**
 
 ## Overview
 
