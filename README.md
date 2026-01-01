@@ -39,6 +39,7 @@ Extensive ecosystem of supporting systems and integration tools that enable agen
 
 ## Documentation
 
+- **[QUICK_START.md](./QUICK_START.md)** - step-by-step local run guide (smoke tests, orchestrator, UI)
 - **[TRADEMARK.md](./TRADEMARK.md)** - Trademark information and system description
 - **[NICE_CLASSIFICATIONS.md](./NICE_CLASSIFICATIONS.md)** - Detailed Nice Classification analysis for trademark filing
 - **[ARCHITECTURE.md](./ARCHITECTURE.md)** - Comprehensive system architecture documentation
@@ -73,7 +74,7 @@ For detailed classification descriptions, see [NICE_CLASSIFICATIONS.md](./NICE_C
 
 ## Getting Started
 
-See the [wiki](./wiki/Getting-Started.md) for the current quick-start guide, smoke tests, and UI/server instructions. Installation, configuration, and usage documentation will expand as the platform develops.
+Start with [QUICK_START.md](./QUICK_START.md) for a concise setup, smoke test, and UI run. The [wiki](./wiki/Getting-Started.md) remains available for a synced copy plus orchestrator tips. Installation, configuration, and usage documentation will expand as the platform develops.
 
 ## License
 

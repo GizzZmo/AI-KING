@@ -1,5 +1,7 @@
 # Getting Started
 
+> The canonical quick-start lives in [QUICK_START.md](../QUICK_START.md). This page mirrors the core steps so the wiki stays in sync with the repo documentation.
+
 ## Quick Run
 - **Smoke tests:** `python -m unittest`
 - **Command Deck UI:** open `web/index.html` directly or build the settings server:  
