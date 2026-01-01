@@ -43,6 +43,7 @@ Extensive ecosystem of supporting systems and integration tools that enable agen
 - **[NICE_CLASSIFICATIONS.md](./NICE_CLASSIFICATIONS.md)** - Detailed Nice Classification analysis for trademark filing
 - **[ARCHITECTURE.md](./ARCHITECTURE.md)** - Comprehensive system architecture documentation
 - **[ROADMAP.md](./ROADMAP.md)** - Implementation phases derived from Technical Blueprint
+- **[Wiki](./wiki/Home.md)** - Repo-backed wiki with quick-starts, orchestrator guidance, and UI/server notes
 
 ## Trademark Classification
 
@@ -72,7 +73,7 @@ For detailed classification descriptions, see [NICE_CLASSIFICATIONS.md](./NICE_C
 
 ## Getting Started
 
-Documentation for installation, configuration, and usage will be added as the platform develops.
+See the [wiki](./wiki/Getting-Started.md) for the current quick-start guide, smoke tests, and UI/server instructions. Installation, configuration, and usage documentation will expand as the platform develops.
 
 ## License
 
