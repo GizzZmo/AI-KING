@@ -1,4 +1,4 @@
-# AI KING
+# AI-KING
 **Artifical General Intelligence project (AGI)**
 
 ## Overview
