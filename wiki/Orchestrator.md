@@ -13,12 +13,14 @@ from ai_king.checkpoint import CheckpointStore
 from ai_king.orchestrator import SovereignOrchestrator, GovernanceConfig
 
 store = CheckpointStore(Path("checkpoints"))
-gov = GovernanceConfig(approvals_required=["deploy"], interrupt_before=["handoff"])
+gov = GovernanceConfig(approvals_required={"deploy"}, interrupt_before=["handoff"])
 
 orchestrator = SovereignOrchestrator(store, governance=gov)
-state = orchestrator.bootstrap("Ship feature", ["draft", "review", "deploy"], "alpha")
-state = orchestrator.run_until_pause(state, "alpha")   # pauses before deploy
-state = orchestrator.approve_and_resume(state, "alpha")
+state = orchestrator.bootstrap(
+    "Ship feature", ["draft", "review", "deploy"], thread_id="alpha"
+)
+state = orchestrator.run_until_pause(state, thread_id="alpha")   # pauses before deploy
+state = orchestrator.approve_and_resume(state, thread_id="alpha")
 ```
 
 ## Checkpoints & History

@@ -14,7 +14,7 @@ from ai_king.orchestrator import run_plan, GovernanceConfig
 
 store = CheckpointStore(Path("checkpoints"))
 governance = GovernanceConfig(
-    approvals_required=["ship"],
+    approvals_required={"ship"},
     interrupt_before=["deploy"],
 )
 
