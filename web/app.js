@@ -136,7 +136,7 @@ function savePrompt() {
     existing.updated_at = now;
   } else {
     catalog.prompts.unshift({
-      id: `${Date.now()}`,
+      id: crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(16).slice(2)}`,
       name,
       content,
       template,

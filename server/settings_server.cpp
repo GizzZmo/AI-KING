@@ -51,7 +51,11 @@ std::string read_request(int client_fd) {
         if (cl != std::string::npos) {
           auto line_end = buffer.find("\r\n", cl);
           auto raw = buffer.substr(cl + 15, line_end - (cl + 15));
-          expected_length = static_cast<size_t>(std::strtoul(raw.c_str(), nullptr, 10));
+          char *endptr = nullptr;
+          unsigned long val = std::strtoul(raw.c_str(), &endptr, 10);
+          if (endptr != raw.c_str() && *endptr == '\0') {
+            expected_length = static_cast<size_t>(val);
+          }
         }
       }
     }
@@ -214,7 +218,11 @@ int main() {
   }
 
   int opt = 1;
-  setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt));
+  if (setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt)) < 0) {
+    std::cerr << "setsockopt failed\n";
+    close(server_fd);
+    return 1;
+  }
 
   sockaddr_in address{};
   address.sin_family = AF_INET;
