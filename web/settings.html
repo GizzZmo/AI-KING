@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI KING Settings</title>
+    <style>
+      :root {
+        --bg: #05060b;
+        --panel: rgba(18, 20, 36, 0.9);
+        --accent: #7bffea;
+        --accent-2: #ff2bd1;
+        --text: #e5f9ff;
+        --muted: #7c8ca1;
+      }
+      body {
+        margin: 0;
+        background: radial-gradient(circle at 20% 20%, #0f1629, #05060b 45%),
+          radial-gradient(circle at 80% 0%, #1a103a, #05060b 40%);
+        color: var(--text);
+        font-family: "Inter", "Orbitron", "Segoe UI", system-ui, -apple-system,
+          sans-serif;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+      .panel {
+        width: min(560px, 100%);
+        background: var(--panel);
+        border: 1px solid rgba(123, 255, 234, 0.3);
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45),
+          inset 0 0 20px rgba(255, 43, 209, 0.08);
+      }
+      h1 {
+        margin: 0 0 10px 0;
+      }
+      p {
+        margin: 0 0 18px 0;
+        color: var(--muted);
+      }
+      label {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--muted);
+      }
+      input,
+      select {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(123, 255, 234, 0.3);
+        color: var(--text);
+        padding: 10px 12px;
+        border-radius: 10px;
+        font-size: 14px;
+        outline: none;
+      }
+      .row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+      .toggle {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 10px 0;
+      }
+      button {
+        width: 100%;
+        background: linear-gradient(
+          120deg,
+          rgba(123, 255, 234, 0.25),
+          rgba(255, 43, 209, 0.3)
+        );
+        color: var(--text);
+        border: 1px solid rgba(123, 255, 234, 0.3);
+        padding: 12px 16px;
+        border-radius: 12px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .status {
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      a {
+        color: var(--accent);
+      }
+    </style>
+  </head>
+  <body>
+    <section class="panel">
+      <h1>Settings</h1>
+      <p>Backed by the C++ settings server. Values persist locally and via the API.</p>
+      <form id="settings-form">
+        <div class="row">
+          <div>
+            <label for="theme">Theme</label>
+            <select id="theme">
+              <option value="cyberpunk">Cyberpunk</option>
+              <option value="noir">Noir</option>
+              <option value="light">Light</option>
+            </select>
+          </div>
+          <div>
+            <label for="profile">Active Profile</label>
+            <input id="profile" placeholder="Default profile" />
+          </div>
+        </div>
+        <div class="toggle">
+          <input type="checkbox" id="autosave" />
+          <label for="autosave">Autosave prompts to settings server</label>
+        </div>
+        <div class="toggle">
+          <input type="checkbox" id="localFallback" />
+          <label for="localFallback">Allow local fallback when offline</label>
+        </div>
+        <button type="submit">Save Settings</button>
+      </form>
+      <div class="status" id="status">Loading settings...</div>
+      <p style="margin-top:16px;">
+        Return to the <a href="/">Command Deck</a>.
+      </p>
+    </section>
+
+    <script>
+      const statusEl = document.getElementById("status");
+      const form = document.getElementById("settings-form");
+      const storageKey = "ai_king_settings";
+      const defaults = {
+        theme: "cyberpunk",
+        autosave: true,
+        profile: "default",
+        localFallback: true,
+      };
+
+      function applySettings(data) {
+        document.getElementById("theme").value = data.theme || defaults.theme;
+        document.getElementById("autosave").checked =
+          data.autosave ?? defaults.autosave;
+        document.getElementById("localFallback").checked =
+          data.localFallback ?? defaults.localFallback;
+        document.getElementById("profile").value =
+          data.profile || defaults.profile;
+      }
+
+      async function loadSettings() {
+        const local = localStorage.getItem(storageKey);
+        if (local) {
+          try {
+            applySettings(JSON.parse(local));
+          } catch (_) {}
+        }
+
+        try {
+          const res = await fetch("/api/settings");
+          if (res.ok) {
+            const data = await res.json();
+            applySettings(data);
+            statusEl.textContent = "Loaded from backend.";
+            return;
+          }
+        } catch (err) {
+          statusEl.textContent =
+            "Backend unavailable; using cached or default settings.";
+          return;
+        }
+        statusEl.textContent = "Using defaults.";
+      }
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const payload = {
+          theme: document.getElementById("theme").value,
+          autosave: document.getElementById("autosave").checked,
+          localFallback: document.getElementById("localFallback").checked,
+          profile: document.getElementById("profile").value || defaults.profile,
+        };
+        localStorage.setItem(storageKey, JSON.stringify(payload));
+        try {
+          const res = await fetch("/api/settings", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+          statusEl.textContent = res.ok
+            ? "Settings saved to backend."
+            : "Saved locally; backend refused update.";
+        } catch (err) {
+          statusEl.textContent =
+            "Saved locally; backend settings server unreachable.";
+        }
+      });
+
+      loadSettings();
+    </script>
+  </body>
+</html>

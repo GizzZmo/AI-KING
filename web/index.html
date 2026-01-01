@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI KING Command Deck</title>
+    <style>
+      :root {
+        --bg: #05060b;
+        --panel: rgba(18, 20, 36, 0.9);
+        --accent: #7bffea;
+        --accent-2: #ff2bd1;
+        --text: #e5f9ff;
+        --muted: #7c8ca1;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: "Inter", "Orbitron", "Segoe UI", system-ui, -apple-system,
+          sans-serif;
+        background: radial-gradient(circle at 20% 20%, #0f1629, #05060b 45%),
+          radial-gradient(circle at 80% 0%, #1a103a, #05060b 40%);
+        color: var(--text);
+        min-height: 100vh;
+        padding: 24px;
+      }
+      .frame {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        gap: 16px;
+      }
+      header {
+        border: 1px solid rgba(123, 255, 234, 0.3);
+        border-radius: 16px;
+        padding: 16px;
+        background: linear-gradient(120deg, rgba(123, 255, 234, 0.1), rgba(255, 43, 209, 0.08));
+        box-shadow: 0 0 20px rgba(123, 255, 234, 0.25);
+      }
+      header h1 {
+        margin: 0 0 8px 0;
+        letter-spacing: 1px;
+      }
+      header .meta {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        color: var(--muted);
+      }
+      .grid {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: 1.1fr 1.2fr;
+      }
+      .panel {
+        background: var(--panel);
+        border: 1px solid rgba(123, 255, 234, 0.25);
+        border-radius: 16px;
+        padding: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45),
+          inset 0 0 20px rgba(255, 43, 209, 0.08);
+      }
+      .panel h2 {
+        margin: 0 0 12px 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+      }
+      .chip {
+        background: rgba(255, 43, 209, 0.15);
+        border: 1px solid rgba(255, 43, 209, 0.3);
+        padding: 4px 10px;
+        border-radius: 999px;
+        color: #ffd6f7;
+        font-size: 12px;
+        letter-spacing: 0.5px;
+      }
+      .controls {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 12px;
+      }
+      label {
+        font-size: 13px;
+        color: var(--muted);
+        display: block;
+        margin-bottom: 6px;
+      }
+      select,
+      input,
+      textarea {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(123, 255, 234, 0.3);
+        color: var(--text);
+        padding: 10px 12px;
+        border-radius: 10px;
+        font-size: 14px;
+        outline: none;
+        transition: border 0.2s ease, box-shadow 0.2s ease;
+      }
+      textarea {
+        min-height: 240px;
+        resize: vertical;
+      }
+      select:focus,
+      input:focus,
+      textarea:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 2px rgba(123, 255, 234, 0.15);
+      }
+      .btn-row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 12px;
+      }
+      button {
+        background: linear-gradient(120deg, rgba(123, 255, 234, 0.25), rgba(255, 43, 209, 0.3));
+        color: var(--text);
+        border: 1px solid rgba(123, 255, 234, 0.3);
+        padding: 10px 16px;
+        border-radius: 12px;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        cursor: pointer;
+        transition: transform 0.1s ease, box-shadow 0.2s ease;
+      }
+      button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 8px 16px rgba(123, 255, 234, 0.25);
+      }
+      .preset-list,
+      .saved-list {
+        display: grid;
+        gap: 10px;
+      }
+      .card {
+        padding: 12px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(123, 255, 234, 0.15);
+      }
+      .card h3 {
+        margin: 0 0 6px 0;
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        font-size: 15px;
+      }
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .status {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .status .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 12px var(--accent);
+      }
+      .link {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 700;
+      }
+      @media (max-width: 900px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="frame">
+      <header>
+        <h1>AI KING Command Deck</h1>
+        <div class="meta">
+          <span class="status"><span class="dot"></span> Ready</span>
+          <span class="chip">Cyberpunk UI</span>
+          <a class="link" href="/settings">Settings Server</a>
+        </div>
+      </header>
+
+      <div class="grid">
+        <section class="panel">
+          <h2>Presets & Templates <span class="chip">Neon-Ready</span></h2>
+          <div class="controls">
+            <div>
+              <label for="preset-select">Preset</label>
+              <select id="preset-select"></select>
+            </div>
+            <div>
+              <label for="template-select">Template</label>
+              <select id="template-select"></select>
+            </div>
+            <div>
+              <label for="prompt-name">Prompt Title</label>
+              <input id="prompt-name" placeholder="Name this prompt" />
+            </div>
+          </div>
+          <div class="btn-row">
+            <button id="apply-preset">Load Preset</button>
+            <button id="apply-template">Inject Template</button>
+            <button id="save-prompt">Save Prompt</button>
+            <button id="download-prompts">Export JSON</button>
+          </div>
+          <div class="preset-list" id="preset-list"></div>
+        </section>
+
+        <section class="panel">
+          <h2>Prompt Workspace <span class="chip">Autosave</span></h2>
+          <label for="prompt-input">Prompt</label>
+          <textarea id="prompt-input" placeholder="Type, remix, and refine prompts..."></textarea>
+          <div class="btn-row">
+            <button id="load-saved">Load Saved</button>
+            <button id="clear-current">Clear</button>
+          </div>
+          <div class="saved-list" id="saved-list"></div>
+        </section>
+      </div>
+    </div>
+
+    <script>
+      window.defaultPromptCatalog = {
+        presets: [
+          {
+            id: "neon-research",
+            name: "Neon Research",
+            prompt:
+              "Gather primary facts, sources, and citations. Return bulletproof notes with links and dates.",
+          },
+          {
+            id: "stealth-coder",
+            name: "Stealth Coder",
+            prompt:
+              "Produce minimal, secure code with inline rationale. Prefer small diffs and explicit tests.",
+          },
+          {
+            id: "critic-loop",
+            name: "Critic Loop",
+            prompt:
+              "Review output for safety, bias, and correctness. Suggest concrete fixes and retry plan.",
+          },
+        ],
+        templates: [
+          {
+            id: "mission-brief",
+            name: "Mission Brief",
+            body: "## Objective\\n{objective}\\n\\n## Constraints\\n{constraints}\\n\\n## Plan\\n- {steps}\\n\\n## Deliverables\\n- {deliverables}",
+          },
+          {
+            id: "code-task",
+            name: "Code Task",
+            body: "Context:\\n{context}\\n\\nAcceptance criteria:\\n{criteria}\\n\\nTest plan:\\n{tests}",
+          },
+          {
+            id: "retro",
+            name: "Retro",
+            body: "What went well:\\n{positive}\\n\\nWhat broke:\\n{issues}\\n\\nNext iteration:\\n{actions}",
+          },
+        ],
+        prompts: [],
+        settings: { theme: "cyberpunk", autosave: true },
+      };
+    </script>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
