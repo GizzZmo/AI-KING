@@ -1,0 +1,50 @@
+{
+  "presets": [
+    {
+      "id": "neon-research",
+      "name": "Neon Research",
+      "prompt": "Gather primary facts, sources, and citations. Return bulletproof notes with links and dates."
+    },
+    {
+      "id": "stealth-coder",
+      "name": "Stealth Coder",
+      "prompt": "Produce minimal, secure code with inline rationale. Prefer small diffs and explicit tests."
+    },
+    {
+      "id": "critic-loop",
+      "name": "Critic Loop",
+      "prompt": "Review output for safety, bias, and correctness. Suggest concrete fixes and retry plan."
+    }
+  ],
+  "templates": [
+    {
+      "id": "mission-brief",
+      "name": "Mission Brief",
+      "body": "## Objective\\n{objective}\\n\\n## Constraints\\n{constraints}\\n\\n## Plan\\n- {steps}\\n\\n## Deliverables\\n- {deliverables}"
+    },
+    {
+      "id": "code-task",
+      "name": "Code Task",
+      "body": "Context:\\n{context}\\n\\nAcceptance criteria:\\n{criteria}\\n\\nTest plan:\\n{tests}"
+    },
+    {
+      "id": "retro",
+      "name": "Retro",
+      "body": "What went well:\\n{positive}\\n\\nWhat broke:\\n{issues}\\n\\nNext iteration:\\n{actions}"
+    }
+  ],
+  "prompts": [
+    {
+      "id": "welcome",
+      "name": "Cyber Welcome",
+      "content": "You are the AI King. Maintain state, log every decision, and request approval before sensitive actions.",
+      "template": "mission-brief",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  ],
+  "settings": {
+    "theme": "cyberpunk",
+    "autosave": true,
+    "last_updated": "2026-01-01T00:00:00Z"
+  }
+}

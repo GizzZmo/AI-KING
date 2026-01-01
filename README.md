@@ -91,3 +91,19 @@ Run the smoke tests with:
 ```bash
 python -m unittest
 ```
+
+### Command Deck UI & Settings Server
+
+- A lightweight cyberpunk-themed HTML5 frontend lives in `web/`. Open `web/index.html` directly or serve it via the settings server.
+- The settings server is a small C++ binary that serves the settings page and JSON APIs for prompts/templates.
+- Build and run:
+
+```bash
+g++ -std=c++17 -O2 -o settings_server server/settings_server.cpp
+./settings_server # defaults to port 8088
+```
+
+- Endpoints:
+  - `GET /api/prompts` and `POST /api/prompts` read/write `data/prompts.json`
+  - `GET /api/settings` and `POST /api/settings` manage backend settings
+  - `GET /settings` serves the backend settings UI
