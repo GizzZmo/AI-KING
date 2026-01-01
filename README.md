@@ -8,7 +8,7 @@ AI KING is a comprehensive generative general intelligence platform powered by L
 ## Uformell oppsummering (norsk)
 
 - **Hovedidé:** AI King er et sammensatt GGI-system, ikke én enkelt modell. Det bygges av flere spesialiserte deler som samarbeider.
-- **Orkestrering (Sovereign Layer):** Bruk en deterministisk tilstandsmaskin med LangGraph og database-checkpointing for å kunne «time travel» ved feil. Kjør en hybrid arkitektur der LangGraph styrer, mens Microsoft AutoGen kan kalles inne i noder for kreativ idémyldring.
+- **Orkestrering (Sovereign Layer):** Bruk en deterministisk tilstandsmaskin med LangGraph og database-checkpointing for å kunne «time travel» ved feil. Kjør en hybrid arkitektur der LangGraph styrer, mens Microsoft AutoGen kan kalles inne i noder for kreativ idéutvikling.
 - **GGI-kjerne:** Mixture-of-Agents (flere modeller parallelt) med en aggregator som syr sammen svarene. Korte læringssløyfer med Kritiker/Refleksjon, og meta-læring som automatisk oppdaterer agent-prompter når gjentatte feil oppdages.
 - **Hofstaten og verktøy:** Supervisor-arkitektur med spesialiserte agenter (Researcher, Coder, Reviewer). Human-in-the-loop «breakpoints» før risikable handlinger, MCP som standard grensesnitt for verktøy, sikker kodekjøring i ekstern sandkasse (f.eks. E2B), og visionsstyrt nettlesing for å navigere komplekse websider.
 - **Hukommelse:** Korttidsminne via checkpointing i LangGraph og langtidsminne via GraphRAG/Knowledge Graph for relasjonsforankret kontekst.
