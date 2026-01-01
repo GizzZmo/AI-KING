@@ -1,5 +1,5 @@
 # AI-KING
-**Artifical General Intelligence project (AGI)**
+**Artificial General Intelligence project (AGI)**
 
 ## Overview
 
