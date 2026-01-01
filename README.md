@@ -81,3 +81,13 @@ Copyright © 2024 AI KING. All rights reserved.
 ## Contact
 
 For trademark inquiries, licensing, or general information, please contact the repository owner.
+
+## Prototype Implementation
+
+An initial deterministic orchestrator scaffold is available in the `ai_king` package. It includes typed state, checkpointing, and human-in-the-loop breakpoints as outlined in the architecture documents.
+
+Run the smoke tests with:
+
+```bash
+python -m unittest
+```
